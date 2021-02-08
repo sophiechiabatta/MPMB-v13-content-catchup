@@ -1,4 +1,4 @@
-//Adding magical items to Explorer's Guide to Wildemount. You can find me on discord @kat#9137.
+//Adding magical items to Explorer's Guide to Wildemount. Currently working on the Vestiges of Divergence. You can find me on discord @kat#9137.
 
 # MPMB v13 content catchup
 
