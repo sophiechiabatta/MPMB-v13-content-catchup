@@ -1,3 +1,5 @@
+//Adding magical items to Explorer's Guide to Wildemount. 
+
 # MPMB v13 content catchup
 
 A community effort to **_unofficially_** transcribe all content missing while v13 is in a content frozen state.
