@@ -487,7 +487,7 @@ AddSubClass("cleric", "peace domain", {
 	regExpSearch : /^(?=.*(cleric|priest|clergy|acolyte))(?=.*peace).*$/i,
 	subname : "Peace Domain",
 	source : ["TCoE", 32],
-	spellcastingExtra : ["heroism", "sanctuary", "aid", "warding bond", "beacon of hope", "sending", "aura of purity", "Otiluke's resilient sphere", "greater restoration", "Rary's telepathic bond"],
+	spellcastingExtra : ["heroism", "sanctuary", "aid", "warding bond", "beacon of hope", "sending", "aura of purity", "otiluke's resilient sphere", "greater restoration", "Rary's telepathic bond"],
 	features : {
 		"subclassfeature1" : {
 			name : "Implement of Peace",
