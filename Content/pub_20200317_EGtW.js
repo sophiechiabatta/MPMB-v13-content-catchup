@@ -1132,3 +1132,775 @@ SpellsList["time ravage"] = {
 	descriptionMetric : "Crea take 10d12 Necro Dmg and aged; save half dmg and not aged", 	
 	descriptionFull : "You target a creature you can see within range, putting its physical form through the devastation of rapid aging. The target must make a Constitution saving throw, taking 10d12 necrotic damage on a failed save, or half as much damage on a successful one. If the save fails, the target also ages to the point where it has only 30 days left before it dies of old age. In this aged state, the target has disadvantage on attack rolls, ability checks, and saving throws, and its walking speed is halved. Only the wish spell or the greater restoration cast with a 9th-level spell slot can end these effects and restore the target to its previous age.",
 };
+
+//Add Magic Items (contributed by kat9137 [discord] aka sophiechiabatta [github])
+
+//Vestiges of Divergence
+MagicItemsList["danoth's visor"] = {
+	name : "Danoth's Visor",
+	source : ["W", 270],
+	type : "wondrous item",
+	rarity : "legendary",
+	attunement : true,
+	description : "These mithral-frame goggles with clear diamond lenses were used by the evoker Danoth Oro to spot invisible enemies and scout areas from afar. See notes page for more information.",
+	choices : ["dormant state", "awakened state", "exaulted state"],
+	"dormant state" : {
+		name : "Danoth's Visor: Dormant",
+		vision : [["Danoth's Visor", "fixed 60"]],
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Danoth's Visor",
+			note : "\n  \u2022 Dormant State (EGtW 270)" + desc([
+				"The wearer can see normally in darkness, both magical and nonmagical, to a distance of 60 feet.",
+				"The wearer has advantage on Intelligence (Investigation) and Wisdom (Perception) checks that rely on sight.",
+			])  
+		}]
+	},
+	"awakened state" : {
+		name : "Danoth's Visor: Awakened",
+		vision : [["Danoth's Visor", "fixed 60"]],
+		action : [["bonus action", " (see thru matter)"], ["bonus action", " (spyglass mode)"]], 
+		extraLimitedFeatures : [{
+			name : "Danoth's Visor (see thru matter)",
+			usages : 1,
+			recovery : "dawn"
+		}],
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Danoth's Visor",
+			note : "\n  \u2022 Dormant State (EGtW 270)" + desc([
+				"The wearer can see normally in darkness, both magical and nonmagical, to a distance of 60 feet.",
+				"The wearer has advantage on Intelligence (Investigation) and Wisdom (Perception) checks that rely on sight.",
+			]) + "\n  \u2022 Awakened State (EGtW 270)" + desc([
+				"The wearer sees invisible creatures and objects within 60 feet as if they were visible, and they can see into the Ethereal Plane.",
+				"Using a bonus action, the wearer can speak a command word and use the goggles to see into and through solid matter. This vision has a radius of 60 feet and lasts for 1 minute. The vision can penetrate 1 foot of stone, 1 inch of common metal, or up to 3 feet of wood or dirt. Thicker substances block the vision, as does a thin sheet of lead. This property can't be used again until the next dawn.",	
+				"As a bonus action, the wearer can speak a command word to switch the goggles into spyglass mode. While in this mode, creatures and objects viewed through the goggles are magnified to twice their size.",
+			]) 
+		}]
+	},
+	"exaulted state" : {
+		name : "Danoth's Visor: Exaulted",
+		vision : [["Danoth's Visor", "fixed 60"]],
+		action : [["action", " (Antimagic Field)"], ["bonus action", " (see thru matter)"], ["bonus action", " (spyglass mode)"]],
+		extraLimitedFeatures : [{
+			name : "Danoth's Visor (see thru matter)",
+			usages : 1,
+			recovery : "dawn"
+		}, {
+			name : "Danoth's Visor (Antimagic Field)",
+			usages : 1,
+			recovery : "dawn"
+		}],
+		spellcastingAbility : "class",
+		spellcastingBonus : {
+			name : "Once per dawn",
+			spells : ["antimagic field"],
+			selection : ["antimagic field"],
+			firstCol : 'oncelr',
+			times : 1
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Danoth's Visor",
+			note : "\n  \u2022 Dormant State (EGtW 270)" + desc([
+				"The wearer can see normally in darkness, both magical and nonmagical, to a distance of 60 feet.",
+				"The wearer has advantage on Intelligence (Investigation) and Wisdom (Perception) checks that rely on sight.",
+			]) + "\n  \u2022 Awakened State (EGtW 270)" + desc([
+				"The wearer sees invisible creatures and objects within 60 feet as if they were visible, and they can see into the Ethereal Plane.",
+				"Using a bonus action, the wearer can speak a command word and use the goggles to see into and through solid matter. This vision has a radius of 60 feet and lasts for 1 minute. The vision can penetrate 1 foot of stone, 1 inch of common metal, or up to 3 feet of wood or dirt. Thicker substances block the vision, as does a thin sheet of lead. This property can't be used again until the next dawn.",	
+				"As a bonus action, the wearer can speak a command word to switch the goggles into spyglass mode. While in this mode, creatures and objects viewed through the goggles are magnified to twice their size.",
+			]) + "\n  \u2022 Exaulted State (EGtW 270)" + desc([
+				"The wearer automatically detects illusions he or she can see and automatically succeeds on saving throws against them. In addition, they see a bright aura around any creature that isn't in its true form.",
+				"As an action, the wearer can cast the antimagic field spell from the visor. This property can't be used again until the next dawn.",
+			]) 
+		}]
+	}
+};
+
+MagicItemsList["hide of the feral guardian"] = {
+	name : "Hide of the Feral Guardian",
+	source : ["W", 271],
+	type : "armor (studded leather)",
+	rarity : "legendary",
+	attunement : true,
+	description : "It is believed that this polished and beautifully detailed leather armor was a gift from Melora, bestowed on a long-forgotten archdruid and champion of the natural world before the terrors of the Calamity. See notes page for more info.",
+	extraLimitedFeatures : [{
+			name : "Hide of the Feral Guardian (Polymorph)",
+			usages : 1,
+			recovery : "dawn"
+		}],
+	choices : ["dormant state", "awakened state", "exaulted state"],
+	"dormant state" : {
+		name : "Hide of the Feral Guardian: Dormant",
+		armorAdd : "Hide of the Feral Guardian",
+		armorOptions : {
+			regExpSearch : /^(?=.*hide)(?=.*feral)(?=.*guardian).*$/i,
+			name : "Hide of the Feral Guardian",
+			source : ["W", 271],
+			type : "light",
+			ac : 13,
+			weight : 13,
+		},
+		action : [["action", " (polymorph)"]],
+		spellcastingBonus : [{
+			name : "1/LR no spell slot",
+			spells : ["polymorph"],
+			selection : ["polymorph"],
+			firstCol : "oncelr",
+		}],
+		spellChanges : {
+			"polymorph" : {
+				name : "Polymorph (special)",
+				range : "Self",
+				description : "I transform into a giant owl, but I keep my Int, Wis, Cha.",
+				changes : "Using my Hide of the Feral Guardian, I can cast Polymorph once per dawn without using a spell slot, but when I do so I can only cast it on myself and transform into a giant owl. I keep my Int, Wis, Cha."
+			},
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Hide of the Feral Guardian",
+			note : "\n  \u2022 Dormant State (EGtW 271)" + desc([
+				"The armor grants you a +1 bonus to AC.",
+				"While you are transformed by an effect that replaces any of your game statistics with those of another creature, you have a +1 bonus to melee attack and damage rolls, and you retain the benefits of this armor.",
+				"As an action, you can use the armor to cast polymorph on yourself, transforming into a giant owl while retaining your Intelligence, Wisdom, and Charisma scores. This property can’t be used again until the next dawn.",
+			])  
+		}]
+	},
+	"awakened state" : {
+		name : "Hide of the Feral Guardian: Awakened",
+		armorAdd : "Hide of the Feral Guardian: Awakened",
+		armorOptions : {
+			regExpSearch : /^(?=.*hide)(?=.*feral)(?=.*guardian).*$/i,
+			name : "Hide of the Feral Guardian: Awakened",
+			source : ["W", 271],
+			type : "light",
+			ac : 14,
+			weight : 13,
+		},
+		action : [["action", " (polymorph)"]],
+		spellcastingBonus : [{
+			name : "1/LR no spell slot",
+			spells : ["polymorph"],
+			selection : ["polymorph"],
+			firstCol : "oncelr",
+		}],
+		spellChanges : {
+			"polymorph" : {
+				name : "Polymorph (special)",
+				range : "Self",
+				description : "I transform into a giant owl/cave bear (polar bear), but I keep my Int, Wis, Cha.",
+				changes : "Using my Hide of the Feral Guardian, I can cast Polymorph once per dawn without using a spell slot, but when I do so I can only cast it on myself and transform into a giant owl or a cave bear (polar bear). I keep my Int, Wis, Cha."
+			},
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Hide of the Feral Guardian",
+			note : "\n  \u2022 Awakened State (EGtW 271)" + desc([
+				"The armor grants you a +2 bonus to AC.",
+				"While you are transformed by an effect that replaces any of your game statistics with those of another creature, you have a +2 bonus to melee attack and damage rolls, and you retain the benefits of this armor.",
+				"As an action, you can use the armor to cast polymorph on yourself, transforming into a giant owl or a cave bear (polar bear) while retaining your Intelligence, Wisdom, and Charisma scores. This property can’t be used again until the next dawn.",
+			]) 
+		}]
+	},
+	"exaulted state" : {
+		name : "Hide of the Feral Guardian: Exaulted",
+		armorAdd : "Hide of the Feral Guardian: Exaulted",
+		armorOptions : {
+			regExpSearch : /^(?=.*hide)(?=.*feral)(?=.*guardian).*$/i,
+			name : "Hide of the Feral Guardian: Exaulted",
+			source : ["W", 271],
+			type : "light",
+			ac : 15,
+			weight : 13,
+		},
+		action : [["action", " (polymorph)"]],
+		spellcastingBonus : [{
+			name : "1/LR no spell slot",
+			spells : ["polymorph"],
+			selection : ["polymorph"],
+			firstCol : "oncelr",
+		}],
+		spellChanges : {
+			"polymorph" : {
+				name : "Polymorph (special)",
+				range : "Self",
+				description : "I transform into a giant owl/cave bear (polar bear)/guardian wolf, but I keep my Int, Wis, Cha.",
+				changes : "Using my Hide of the Feral Guardian, I can cast Polymorph once per dawn without using a spell slot, but when I do so I can only cast it on myself and transform into a giant owl, cave bear (polar bear), or guardian wolf. I keep my Int, Wis, Cha."
+			},
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Hide of the Feral Guardian",
+			note : "\n  \u2022 Exaulted State (EGtW 271)" + desc([
+				"The armor grants you a +3 bonus to AC.",
+				"While you are transformed by an effect that replaces any of your game statistics with those of another creature, you have a +3 bonus to melee attack and damage rolls, and you retain the benefits of this armor.",
+				"As an action, you can use the armor to cast polymorph on yourself, transforming into a giant owl, cave bear (polar bear), or guardian wolf while retaining your Intelligence, Wisdom, and Charisma scores. This property can’t be used again until the next dawn.",
+			]) 
+		}]
+	}
+};
+
+MagicItemsList["infiltrator's key"] = {
+	name : "Infiltrator's Key",
+	source : ["W", 273],
+	type : "wondrous item",
+	rarity : "legendary",
+	attunement : true,
+	description : "This mithral skeleton key was forged using the blood of twelve master thieves executed for trying to steal magic items during the Age of Arcanum. See notes page for more information.",
+	choices : ["dormant state", "awakened state", "exaulted state"],
+	"dormant state" : {
+		name : "Infiltrator's Key: Dormant",
+		toolProfs : [["Thieves' tools", "Dex"]],
+		eval : function () {
+			if (CurrentMagicItems.known.indexOf("boots of elvenkind") !== -1) {
+				SetProf("advantage", true, ["Stealth", true], "Infiltrator's Key (magic items)");
+			}
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Infiltrator's Key",
+			note : "\n  \u2022 Dormant State (EGtW 273)" + desc([
+				"The key can be used as thieves’ tools for the purpose of opening locks. When using the key, you are considered proficient in thieves’ tools and you have advantage on ability checks made to open locks.",
+				"While holding the key, your steps are muffled, giving you advantage on Dexterity (Stealth) checks made to move silently.",
+			])  
+		}]
+	},
+	"awakened state" : {
+		name : "Infiltrator's Key: Awakened",
+		toolProfs : [["Thieves' tools", "Dex"]],
+		eval : function () {
+			if (CurrentMagicItems.known.indexOf("boots of elvenkind") !== -1) {
+				SetProf("advantage", true, ["Stealth", true], "Infiltrator's Key (magic items)");
+			}
+		},
+		action : [["bonus action", " (transform dagger)"], ["bonus action", " (create opening)"]], 
+		weaponsAdd : ["Infiltrator's Key"],
+		weaponOptions : {
+			baseWeapon : "dagger",
+			regExpSearch : /^(?=.*infiltrators)(?=.*key).*$/i,
+			name : "Infiltrator's Key",
+			source : ["W", 273],
+			range : "20/60 ft",
+			damage : [1, 4, "piercing"],
+			description : "Finesse, light, thrown",
+			modifiers : [1, 1]
+		},
+		spellcastingAbility : "class",
+		spellcastingBonus : {
+			name : "Once per dawn",
+			spells : ["alter self", "invisibility", "knock", "pass without trace"],
+			selection : ["alter self", "invisibility", "knock", "pass without trace"],
+			firstCol : 'oncelr',
+			times : 4
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Infiltrator's Key",
+			note : "\n  \u2022 Dormant State (EGtW 273)" + desc([
+				"The key can be used as thieves’ tools for the purpose of opening locks. When using the key, you are considered proficient in thieves’ tools and you have advantage on ability checks made to open locks.",
+				"While holding the key, your steps are muffled, giving you advantage on Dexterity (Stealth) checks made to move silently.",
+			]) + "\n  \u2022 Awakened State (EGtW 273)" + desc([
+				"While holding the key, you can use a bonus action to transform the key into a magic dagger or back into a key. While the key is in the form of a dagger, you gain a +1 bonus to attack and damage rolls made with it, and it returns to your hand immediately after it is used to make a ranged attack.",
+				"While holding the key, you can use an action to cast one of the following spells from it: alter self, invisibility, knock, or pass without trace. Once a spell has been cast using the key, it can’t be used to cast that spell again until the next dawn.",		
+			]) 
+		}]
+	},
+	"exaulted state" : {
+		name : "Infiltrator's Key: Exaulted",
+		toolProfs : [["Thieves' tools", "Dex"]],
+		eval : function () {
+			if (CurrentMagicItems.known.indexOf("boots of elvenkind") !== -1) {
+				SetProf("advantage", true, ["Stealth", true], "Infiltrator's Key (magic items)");
+			}
+		},
+		action : [["bonus action", " (transform dagger)"], ["bonus action", " (create opening)"]], 
+		weaponsAdd : ["Infiltrator's Key"],
+		weaponOptions : {
+			baseWeapon : "dagger",
+			regExpSearch : /^(?=.*infiltrator)(?=.*key).*$/i,
+			name : "Infiltrator's Key",
+			source : ["W", 273],
+			range : "20/60 ft",
+			damage : [1, 4, "piercing"],
+			description : "Finesse, light, thrown",
+			modifiers : [1, 1]
+		},
+		spellcastingAbility : "class",
+		spellcastingBonus : {
+			name : "Once per dawn",
+			spells : ["alter self", "invisibility", "knock", "pass without trace", "dimension door", "gaseous form", "mislead"],
+			selection : ["alter self", "invisibility", "knock", "pass without trace", "dimension door", "gaseous form", "mislead"],
+			firstCol : 'oncelr',
+			times : 7
+		},
+		extraLimitedFeatures : [{
+			name : "Infiltrator's Key (create opening)",
+			usages : 1,
+			recovery : "dawn"
+		}],
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Infiltrator's Key",
+			note : "\n  \u2022 Dormant State (EGtW 273)" + desc([
+				"The key can be used as thieves’ tools for the purpose of opening locks. When using the key, you are considered proficient in thieves’ tools and you have advantage on ability checks made to open locks.",
+				"While holding the key, your steps are muffled, giving you advantage on Dexterity (Stealth) checks made to move silently.",
+			]) + "\n  \u2022 Awakened State (EGtW 273)" + desc([
+				"While holding the key, you can use a bonus action to transform the key into a magic dagger or back into a key. While the key is in the form of a dagger, you gain a +1 bonus to attack and damage rolls made with it, and it returns to your hand immediately after it is used to make a ranged attack.",
+				"While holding the key, you can use an action to cast one of the following spells from it: alter self, invisibility, knock, or pass without trace. Once a spell has been cast using the key, it can’t be used to cast that spell again until the next dawn.",		
+			]) + "\n  \u2022 Exaulted State (EGtW 273)" + desc([
+				"As a bonus action, you can touch the key to a floor, wall, or ceiling that is no more than 5 feet thick and cause a magical opening to appear in the surface. When you create the opening, you choose its length and width, up to 10 feet for each dimension. The opening lasts until the key passes through it to the other side, at which point it disappears (if a creature is in the opening when the doorway closes, the creature is safely shunted to the nearest unoccupied space). The key can’t be used to create another opening until the next dawn.",
+				"While holding the key, you can use an action to cast one of the following spells from it: dimension door, gaseous form, or mislead. Once a spell has been cast using the key, it can’t be used to cast that spell again until the next dawn.",
+			]) 
+		}]
+	}
+};
+
+MagicItemsList["stormgirdle"] = {
+	name : "Stormgirdle",
+	source : ["W", 273],
+	type : "wondrous item",
+	rarity : "legendary",
+	attunement : true,
+	choices : ["dormant state", "awakened state", "exaulted state"],
+	"dormant state" : {
+		name : "Stormgirdle: Dormant",
+		description : "A wide belt of leather branded with the symbol of Kord. While attuned to and wearing this belt, I am resistant to lightning and thunder damage. My Strength score becomes 21, provided my Strength is not already 21 or higher. As an action, I can become a Storm Avatar for 1 minute. See notes page for more info.",
+		scoresOverride : [21, 0, 0, 0, 0, 0],
+		dmgres : [["Lightning"], ["Thunder"]],
+		action : [["action", " (Storm Avatar)"], ["bonus action", " (Lightning Strike)"]],
+		extraLimitedFeatures : [{
+			name : "Storm Girdle (Storm Avatar)",
+			usages : 1,
+			recovery : "dawn"
+		}],	
+		weaponsAdd : ["Stormgirdle: Lightning Strike"],
+		weaponOptions : {
+			regExpSearch : /^(?=.*stormgirdle)(?=.*lightning)(?=.*strike).*$/i,
+			name : "Stormgirdle: Lightning Strike",
+			source : [["W", 273]],
+			ability : 0,
+			type : "Magic Item",
+			damage : [3, 6, "lightning"],
+			range : '30 ft',
+			description : "Bonus action; Dex save, success - half damage",
+			abilitytodamage : true,
+			modifiers : ["dc+7", ""]
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Stormgirdle",
+			note : "\n  \u2022 Dormant State (EGtW 273)" + desc([
+				"You have resistance to lightning damage and thunder damage, and your Strength score becomes 21 if it isn’t already 21 or higher.",
+				"You can use an action to become a Storm Avatar for 1 minute, gaining the following benefits for the duration. Once you use the girdle’s Storm Avatar property, that property can’t be used again until the next dawn.",
+				"\u2022 You have immunity to lightning damage and thunder damage.",
+				"\u2022 When you hit with a weapon attack that normally deals bludgeoning damage, it deals thunder damage instead. When you hit with a weapon attack that normally deals piercing or slashing damage, it deals lightning damage instead.",
+				"\u2022 As a bonus action, you can choose one creature you can see within 30 feet of you to be struck by lightning. The target must make a DC 15 Dexterity saving throw, taking 3d6 lightning damage on a failed save, or half as much damage on a successful one.",
+			])  
+		}]
+	},
+	"awakened state" : {
+		name : "Stormgirdle: Awakened",
+		description : "A wide belt of leather branded with the symbol of Kord. While attuned to and wearing this belt, I am resistant to lightning and thunder damage. My Strength score becomes 23, provided my Strength is not already 23 or higher. As an action, I can become a Storm Avatar for 1 minute. See notes page for more info.",
+		scoresOverride : [23, 0, 0, 0, 0, 0],
+		dmgres : [["Lightning"], ["Thunder"]],
+		action : [["action", " (Storm Avatar)"], ["bonus action", " (Lightning Strike)"]],
+		extraLimitedFeatures : [{
+			name : "Storm Girdle (Storm Avatar)",
+			usages : 1,
+			recovery : "dawn"
+		}],	
+		weaponsAdd : ["Stormgirdle: Lightning Strike"],
+		weaponOptions : {
+			regExpSearch : /^(?=.*stormgirdle)(?=.*lightning)(?=.*strike).*$/i,
+			name : "Stormgirdle: Lightning Strike",
+			source : [["W", 273]],
+			ability : 0,
+			type : "Magic Item",
+			damage : [4, 6, "lightning"],
+			range : '30 ft',
+			description : "Bonus action; Dex save, success - half damage",
+			abilitytodamage : true,
+			modifiers : ["dc+7", ""]
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Stormgirdle",
+			note : "\n  \u2022 Awakened State (EGtW 273)" + desc([
+				"You have resistance to lightning damage and thunder damage, and your Strength score becomes 23 if it isn’t already 23 or higher.",
+				"You can use an action to become a Storm Avatar for 1 minute, gaining the following benefits for the duration. Once you use the girdle’s Storm Avatar property, that property can’t be used again until the next dawn.",
+				"\u2022 You have immunity to lightning damage and thunder damage.",
+				"\u2022 When you hit with a weapon attack that normally deals bludgeoning damage, it deals thunder damage instead. When you hit with a weapon attack that normally deals piercing or slashing damage, it deals lightning damage instead.",
+				"\u2022 As a bonus action, you can choose one creature you can see within 30 feet of you to be struck by lightning. The target must make a DC 15 Dexterity saving throw, taking 4d6 lightning damage on a failed save, or half as much damage on a successful one.",
+				"\u2022 While transformed into a Storm Avatar, you gain a flying speed of 30 feet and can hover.",
+			]) 
+		}]
+	},
+	"exaulted state" : {
+		name : "Stormgirdle: Exaulted",
+		description : "A wide belt of leather branded with the symbol of Kord. While attuned to and wearing this belt, I am resistant to lightning and thunder damage. My Strength score becomes 25, provided my Strength is not already 25 or higher. As an action, I can become a Storm Avatar for 1 minute. See notes page for more info.",
+		scoresOverride : [25, 0, 0, 0, 0, 0],
+		dmgres : [["Lightning"], ["Thunder"]],
+		action : [["action", " (Storm Avatar)"], ["bonus action", " (Lightning Strike)"]],
+		extraLimitedFeatures : [{
+			name : "Storm Girdle (Storm Avatar)",
+			usages : 1,
+			recovery : "dawn"
+		}],	
+		weaponsAdd : ["Stormgirdle: Lightning Strike"],
+		weaponOptions : {
+			regExpSearch : /^(?=.*stormgirdle)(?=.*lightning)(?=.*strike).*$/i,
+			name : "Stormgirdle: Lightning Strike",
+			source : [["W", 273]],
+			ability : 0,
+			type : "Magic Item",
+			damage : [5, 6, "lightning"],
+			range : '30 ft',
+			description : "Bonus action; Dex save, success - half damage",
+			abilitytodamage : true,
+			modifiers : ["dc+7", ""]
+		},
+		spellcastingAbility : "class",
+		spellcastingBonus : {
+			name : "Once per dawn",
+			spells : ["control weather"],
+			selection : ["control weather"],
+			firstCol : 'oncelr',
+			times : 1
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Stormgirdle",
+			note : "\n  \u2022 Dormant State (EGtW 273)" + desc([
+				"You have resistance to lightning damage and thunder damage, and your Strength score becomes 25 if it isn’t already 25 or higher.",
+				"You can use an action to become a Storm Avatar for 1 minute, gaining the following benefits for the duration. Once you use the girdle’s Storm Avatar property, that property can’t be used again until the next dawn.",
+				"\u2022 You have immunity to lightning damage and thunder damage.",
+				"\u2022 When you hit with a weapon attack that normally deals bludgeoning damage, it deals thunder damage instead. When you hit with a weapon attack that normally deals piercing or slashing damage, it deals lightning damage instead.",
+				"\u2022 As a bonus action, you can choose one creature you can see within 30 feet of you to be struck by lightning. The target must make a DC 15 Dexterity saving throw, taking 5d6 lightning damage on a failed save, or half as much damage on a successful one.",
+				"\u2022 While transformed into a Storm Avatar, you gain a flying speed of 30 feet and can hover.",
+				"You can cast the control weather spell from the girdle. This property can’t be used again until the next dawn.",
+			])
+		}]
+	}
+};
+
+MagicItemsList["verminshroud"] = {
+	name : "Verminshroud",
+	source : ["W", 273],
+	type : "wondrous item",
+	rarity : "legendary",
+	description : "This patchy cloak was pieced together from the pelts of rats found feasting on the dead in Blightshore and is dotted with the bloated corpses of magically preserved insects along its seams. See notes page for more info.",
+	attunement : true,
+	savetxt : { immune : ["disease"] },
+	vision : [["Darkvision", "fixed 60"], ["Darkvision", "+60"]],
+	extraLimitedFeatures : [{
+		name : "Verminshroud (Polymorph)",
+		usages : 1,
+		recovery : "dawn"
+	}],
+	choices : ["dormant state", "awakened state", "exaulted state"],
+	"dormant state" : {
+		name : "Verminshroud: Dormant",
+		action : [["action", " (polymorph)"]],
+		spellcastingBonus : [{
+			name : "1/LR no spell slot",
+			spells : ["polymorph"],
+			selection : ["polymorph"],
+			firstCol : "oncelr",
+		}],
+		spellChanges : {
+			"polymorph" : {
+				name : "Polymorph (special)",
+				range : "Self",
+				description : "I transform into a rat or giant rat, but I keep my Int, Wis, Cha.",
+				changes : "Using Verminshroud, I can cast Polymorph once per dawn without using a spell slot, but when I do so I can only cast it on myself and transform into a rat or giant rat. I keep my Int, Wis, Cha."
+			},
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Verminshroud",
+			note : "\n  \u2022 Dormant State (EGtW 273)" + desc([
+				"You have advantage on Wisdom (Perception) checks that rely on smell, you are immune to disease, and you have darkvision out to a range of 60 feet. If you already have darkvision, wearing the cloak increases the range of your darkvision by 60 feet.",
+				"As an action, you can use the verminshroud to cast polymorph on yourself, transforming into a giant rat or rat while retaining your Intelligence, Wisdom, and Charisma scores, as well as the properties of the cloak. This property can’t be used again until the next dawn.",
+			])  
+		}]
+	},
+	"awakened state" : {
+		name : "Verminshroud: Awakened",
+		action : [["action", " (polymorph)"], ["action", " (insect plague)"]],
+		dmgres : [["Poison"]],
+		fixedDC : 15,
+		action : [["action", " (insect plague)"]],
+		extraLimitedFeatures : [{
+			name : "Verminshroud (Insect Plague)",
+			usages : 1,
+			recovery : "dawn"
+		}],
+		spellcastingBonus : [{
+			name : "Once per dawn",
+			spells : ["polymorph", "insect plague"],
+			selection : ["polymorph", "insect plague"],
+			firstCol : "oncelr",
+			times : 2
+		}],
+		spellChanges : {
+			"polymorph" : {
+				name : "Polymorph (special)",
+				range : "Self",
+				description : "I transform into a rat, giant rat, or giant wasp, but I keep my Int, Wis, Cha.",
+				changes : "Using Verminshroud, I can cast Polymorph once per dawn without using a spell slot, but when I do so I can only cast it on myself and transform into a rat, giant rat, or giant wasp. I keep my Int, Wis, Cha."
+			},
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Verminshroud",
+			note : "\n  \u2022 Dormant State (EGtW 273)" + desc([
+				"You have advantage on Wisdom (Perception) checks that rely on smell, you are immune to disease, and you have darkvision out to a range of 60 feet. If you already have darkvision, wearing the cloak increases the range of your darkvision by 60 feet.",
+				"As an action, you can use the verminshroud to cast polymorph on yourself, transforming into a giant rat or rat while retaining your Intelligence, Wisdom, and Charisma scores, as well as the properties of the cloak. This property can’t be used again until the next dawn.",
+			]) + "\n  \u2022 Awakened State (EGtW 273)" + desc([
+				"You have resistance to poison damage.",
+				"You can use an action to cast the insect plague spell (save DC 15) from the verminshroud, requiring no material components. This property can’t be used again until the next dawn.",		
+				"When you cast the polymorph spell using the verminshroud, you can transform into a giant wasp.",
+			]) 
+		}]
+	},
+	"exaulted state" : {
+		name : "Verminshroud: Exaulted",
+		action : [["action", " (polymorph)"], ["action", " (insect plague)"]],
+		dmgres : [["Poison"]],
+		fixedDC : 15,
+		speed : { climb : { spd : "walk", enc : "walk" } },
+		extraLimitedFeatures : [{
+			name : "Verminshroud (Insect Plague)",
+			usages : 1,
+			recovery : "dawn"
+		}],
+		spellcastingBonus : [{
+			name : "Once per dawn",
+			spells : ["polymorph", "insect plague"],
+			selection : ["polymorph", "insect plague"],
+			firstCol : "oncelr",
+			times : 2
+		}],
+		spellChanges : {
+			"polymorph" : {
+				name : "Polymorph (special)",
+				range : "Self",
+				description : "I transform into a rat, giant rat, giant wasp, or giant scorpion, but I keep my Int, Wis, Cha.",
+				changes : "Using Verminshroud, I can cast Polymorph once per dawn without using a spell slot, but when I do so I can only cast it on myself and transform into a rat, giant rat, giant wasp, or giant scorpion. I keep my Int, Wis, Cha."
+			},
+		},
+		weaponsAdd : ["Verminshroud: Bite"],
+		weaponOptions : {
+			baseWeapon : "unarmed strike",
+			regExpSearch : /^(?=.*verminshroud)(?=.*bite).*$/i,
+			name : "Verminshroud: Bite",
+			source : ["W", 273],
+			damage : [1, 6, "piercing"],
+			description : "Bonus action; DC17 Con save, failure - poisoned 1 min; repeat save end of their turn",
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Verminshroud",
+			note : "\n  \u2022 Dormant State (EGtW 273)" + desc([
+				"You have advantage on Wisdom (Perception) checks that rely on smell, you are immune to disease, and you have darkvision out to a range of 60 feet. If you already have darkvision, wearing the cloak increases the range of your darkvision by 60 feet.",
+				"As an action, you can use the verminshroud to cast polymorph on yourself, transforming into a giant rat or rat while retaining your Intelligence, Wisdom, and Charisma scores, as well as the properties of the cloak. This property can’t be used again until the next dawn.",
+			]) + "\n  \u2022 Awakened State (EGtW 273)" + desc([
+				"You have resistance to poison damage.",
+				"You can use an action to cast the insect plague spell (save DC 15) from the verminshroud, requiring no material components. This property can’t be used again until the next dawn.",		
+				"When you cast the polymorph spell using the verminshroud, you can transform into a giant wasp.",
+			]) + "\n  \u2022 Exaulted State (EGtW 273)" + desc([
+				"You gain a climbing speed equal to your walking speed.",
+				"Your teeth become razor-sharp natural weapons, which you can use to make unarmed strikes. If you hit with them, you deal piercing damage equal to 1d6 + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike. You can make this attack as a bonus action. When you bite a creature and deal damage to it, the creature must succeed on a DC 17 Constitution saving throw or be poisoned for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the condition on itself on a success.",		
+				"When you cast the polymorph spell using the verminshroud, you can transform into a giant scorpion.",
+			])
+		}]
+	}
+};
+
+MagicItemsList["wreath of the Prism"] = {
+	name : "Wreath of the Prism",
+	source : ["W", 274],
+	type : "wondrous item",
+	rarity : "legendary",
+	attunement : true,
+	vision : [["Darkvision", "fixed 60"], ["Darkvision", "+60"]],
+	choices : ["dormant state", "awakened state", "exaulted state"],
+	"dormant state" : {
+		name : "Wreath of the Prism: Dormant",
+		description : "This loop of golden thorns is inset with dozens of gems representing the five colors of Tiamat. I gain darkvision to 60 ft, or extend my darkvision by 60 ft. When I hit a beast, dragon, or monstrosity of CR 5 or lower with an attack, I can cast dominate monster on that creature (save DC 13). See notes page for info.",
+		fixedDC : 13,
+		spellcastingBonus : [{
+			name : "CR 5 or lower, DC 13",
+			spells : ["dominate monster"],
+			selection : ["dominate monster"],
+		}],
+		spellChanges : {
+			"dominate monster" : {
+				name : "Dominate Monster (special)",
+				description : "Beast, dragon, or monstrosity, CR =<5, on attack hit (DC 13).",
+				changes : "I can cast dominate monster on a beast, dragon, or monstrosity of CR 5 when I hit it with an attack (save DC 13). If I use the wreath to charm a second creature, the first spell immediately ends. When the spell ends, the target knows it was charmed by me."
+			},
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Wreath of the Prism",
+			note : "\n  \u2022 Dormant State (EGtW 274)" + desc([
+				"You have darkvision out to a range of 60 feet. If you already have darkvision, wearing the wreath increases the range of your darkvision by 60 feet.",
+				"When you hit a beast, dragon, or monstrosity of challenge rating 5 or lower with an attack, or when you grapple it, you can use the wreath to cast dominate monster on the creature (save DC 13). On a successful save, the target is immune to the power of the wreath for 24 hours. On a failure, a shimmering, golden image of the wreath appears as a collar around the target’s neck or as a crown on its head (your choice) until it is no longer charmed by the spell. If you use the wreath to charm a second creature, the first spell immediately ends. When the spell ends, the target knows it was charmed by you.",
+			])  
+		}]
+	},
+	"awakened state" : {
+		name : "Wreath of the Prism: Awakened",
+		description : "This loop of golden thorns is inset with dozens of gems representing the five colors of Tiamat. I gain darkvision to 60 ft, or extend my darkvision by 60 ft. When I hit a beast, dragon, or monstrosity of CR 10 or lower with an attack, I can cast dominate monster on that creature (save DC 15). See notes page for info.",
+		fixedDC : 15,
+		spellcastingBonus : [{
+			name : "CR 10 or lower, DC 15",
+			spells : ["dominate monster"],
+			selection : ["dominate monster"],
+		}],
+		spellChanges : {
+			"dominate monster" : {
+				name : "Dominate Monster (special)",
+				description : "Beast, dragon, or monstrosity, CR =<10, on attack hit (DC 15).",
+				changes : "I can cast dominate monster on a beast, dragon, or monstrosity of CR 10 when I hit it with an attack (save DC 15). If I use the wreath to charm a second creature, the first spell immediately ends. When the spell ends, the target knows it was charmed by me."
+			},
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Wreath of the Prism",
+			note : "\n  \u2022 Awakened State (EGtW 274)" + desc([
+				"You have darkvision out to a range of 60 feet. If you already have darkvision, wearing the wreath increases the range of your darkvision by 60 feet.",
+				"When you hit a beast, dragon, or monstrosity of challenge rating 10 or lower with an attack, or when you grapple it, you can use the wreath to cast dominate monster on the creature (save DC 15). On a successful save, the target is immune to the power of the wreath for 24 hours. On a failure, a shimmering, golden image of the wreath appears as a collar around the target’s neck or as a crown on its head (your choice) until it is no longer charmed by the spell. If you use the wreath to charm a second creature, the first spell immediately ends. When the spell ends, the target knows it was charmed by you.",
+			]) 
+		}]
+	},
+	"exaulted state" : {
+		name : "Wreath of the Prism: Exaulted",
+		description : "This loop of golden thorns is inset with dozens of gems representing the five colors of Tiamat. I gain darkvision to 60 ft, or extend my darkvision by 60 ft. When I hit a beast, dragon, or monstrosity of CR 15 or lower with an attack, I can cast dominate monster on that creature (save DC 17). See notes page for info.",
+		fixedDC : 17,
+		spellcastingBonus : [{
+			name : "CR 15 or lower, DC 17",
+			spells : ["dominate monster"],
+			selection : ["dominate monster"],
+		}],
+		spellChanges : {
+			"dominate monster" : {
+				name : "Dominate Monster (special)",
+				description : "Beast, dragon, or monstrosity, CR =<15, on attack hit (DC 17).",
+				changes : "I can cast dominate monster on a beast, dragon, or monstrosity of CR 15 when I hit it with an attack (save DC 17). If I use the wreath to charm a second creature, the first spell immediately ends. When the spell ends, the target knows it was charmed by me."
+			},
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Wreath of the Prism",
+			note : "\n  \u2022 Exaulted State (EGtW 274)" + desc([
+				"You have darkvision out to a range of 60 feet. If you already have darkvision, wearing the wreath increases the range of your darkvision by 60 feet.",
+				"When you hit a beast, dragon, or monstrosity of challenge rating 15 or lower with an attack, or when you grapple it, you can use the wreath to cast dominate monster on the creature (save DC 17). On a successful save, the target is immune to the power of the wreath for 24 hours. On a failure, a shimmering, golden image of the wreath appears as a collar around the target’s neck or as a crown on its head (your choice) until it is no longer charmed by the spell. If you use the wreath to charm a second creature, the first spell immediately ends. When the spell ends, the target knows it was charmed by you.",
+			]) 
+		}]
+	}
+};
+
+MagicItemsList["grimoire infinitus"] = {
+	name : "Grimoire Infinitus",
+	source : ["W", 271],
+	type : "wondrous item",
+	rarity : "legendary",
+	attunement : true,
+	description : "Several of these spellbooks with gilded pages and silver-plated covers were created during the Age of Arcanum, but only one has been found since the Calamity ended. See notes page for more info.",
+	prerequisite : "Requires attunement by a wizard",
+	prereqeval : function (v) { return classes.known.wizard ? true : false; },
+	spellcastingAbility : "class",
+	spellcastingBonus : {
+		spells : ["alarm", "antimagic field", "bigby's hand", "blight", "charm person", "confusion", "control weather", "create undead", "detect thoughts", "enlarge/reduce", "fear", "foresight", "gaseous form", "glyph of warding", "legend lore", "leomund's tiny hut", "mass suggestion", "mislead", "misty step", "mordenkainen's faithful hound"],
+		selection : ["alarm", "antimagic field", "bigby's hand", "blight", "charm person", "confusion", "control weather", "create undead", "detect thoughts", "enlarge/reduce", "fear", "foresight", "gaseous form", "glyph of warding", "legend lore", "leomund's tiny hut", "mass suggestion", "mislead", "misty step", "mordenkainen's faithful hound"],
+		times: 20
+	},
+	eval : function () {
+		// get the CurrentSpells object or create it if it didn't exists yet.
+		var spObj = CreateCurrentSpellsEntry("items", "grimoire infinitus");
+		// now set some of the attributes for it, adding the 5 spells that didn't fit as spellcastingBonus
+		spObj.typeSp = "known";
+		spObj.known = { cantrips : 0, spells : 5 };
+		spObj.list = { spells : ["prismatic spray", "ray of enfeeblement", "silent image", "teleport", "thunderwave"] };
+		spObj.selectSp = ["prismatic spray", "ray of enfeeblement", "silent image", "teleport", "thunderwave"];
+		spObj.typeList = 2;
+	},
+	removeeval : function () {
+		if (CurrentSpells["grimoire infinitus"]) {
+			// delete the CurrentSpells object
+			delete CurrentSpells["grimoire infinitus"];
+			SetStringifieds('spells');
+			CurrentUpdates.types.push("spells");
+		}
+	},
+	choices : ["dormant state", "awakened state", "exaulted state"],
+	"dormant state" : {
+		name : "Grimoire Infinitus: Dormant",
+		calcChanges: {
+			spellCalc: [
+                function (type, spellcasters, ability) {
+                    if (type == "prepare") return 1;
+                },
+			],
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Grimoire Infinitus",
+			note : "\n  \u2022 Dormant State (EGtW 274)" + desc([
+				"Most of the book is blank, but the following spells are recorded in the first pages of the tome: alarm, antimagic field, Bigby's hand, blight, charm person, confusion, control weather, create undead, detect thoughts, enlarge/reduce, fear, foresight, gaseous form, glyph of warding, legend lore, Leomund's tiny hut, mass suggestion, mislead, misty step, Mordenkainen's faithful hound, prismatic spray, ray of enfeeblement, silent image, teleport, and thunderwave.",
+				"You can use the grimoire as your spellbook, and you can scribe new spells into it as normal.",
+				"When you prepare wizard spells using the grimoire, the number of wizard spells you can prepare increases by 1.",
+			])  
+		}]
+	},
+	"awakened state" : {
+		name : "Grimoire Infinitus: Awakened",
+		calcChanges: {
+			spellCalc: [
+                function (type, spellcasters, ability) {
+                    if (type == "prepare") return 2;
+                },
+			],
+		},
+		savetxt : { adv_vs : ["spells and other magical effects"] },
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Grimoire Infinitus",
+			note : "\n  \u2022 Awakened State (EGtW 274)" + desc([
+				"Most of the book is blank, but the following spells are recorded in the first pages of the tome: alarm, antimagic field, Bigby's hand, blight, charm person, confusion, control weather, create undead, detect thoughts, enlarge/reduce, fear, foresight, gaseous form, glyph of warding, legend lore, Leomund's tiny hut, mass suggestion, mislead, misty step, Mordenkainen's faithful hound, prismatic spray, ray of enfeeblement, silent image, teleport, and thunderwave.",
+				"You can use the grimoire as your spellbook, and you can scribe new spells into it as normal.",
+				"When you prepare wizard spells using the grimoire, the number of wizard spells you can prepare increases by 2.",
+				"While you carry the spellbook, you have advantage on saving throws against spells and magical effects.",
+			]) 
+		}]
+	},
+	"exaulted state" : {
+		name : "Grimoire Infinitus: Exaulted",
+		calcChanges: {
+			spellCalc: [
+                function (type, spellcasters, ability) {
+                    if (type == "prepare") return 3;
+                },
+			],
+		},
+		savetxt : { adv_vs : ["spells and other magical effects"] },
+		extraLimitedFeatures : [{
+			name : "Arcane Recovery (Grimoire Infinitus)",
+			usages : 1,
+			recovery : "long rest"
+		}],	
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Grimoire Infinitus",
+			note : "\n  \u2022 Exaulted State (EGtW 274)" + desc([
+				"Most of the book is blank, but the following spells are recorded in the first pages of the tome: alarm, antimagic field, Bigby's hand, blight, charm person, confusion, control weather, create undead, detect thoughts, enlarge/reduce, fear, foresight, gaseous form, glyph of warding, legend lore, Leomund's tiny hut, mass suggestion, mislead, misty step, Mordenkainen's faithful hound, prismatic spray, ray of enfeeblement, silent image, teleport, and thunderwave.",
+				"You can use the grimoire as your spellbook, and you can scribe new spells into it as normal.",
+				"When you prepare wizard spells using the grimoire, the number of wizard spells you can prepare increases by 3.",
+				"While you carry the spellbook, you have advantage on saving throws against spells and magical effects.",
+				"You gain one additional use of your Arcane Recovery feature between long rests.",
+			]) 
+		}]
+	}
+};
